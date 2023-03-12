@@ -22,6 +22,8 @@ model User {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
+  checkIns CheckIn[]
+
   @@map("users")
 }
 
@@ -39,6 +41,8 @@ model Gym {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
+  checkIns CheckIn[]
+
   @@map("gyms")
 }
 
@@ -51,5 +55,11 @@ model CheckIn {
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
 
-  @@map("check_ins")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.Uuid
+
+  gym   Gym    @relation(fields: [gymId], references: [id])
+  gymId String @db.Uuid
+
+  @@map("checkIns")
 }
