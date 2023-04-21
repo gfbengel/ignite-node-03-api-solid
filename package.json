@@ -9,21 +9,23 @@
     "build": "tsup src --out-dir build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gabriel Engel",
   "license": "ISC",
   "devDependencies": {
     "@rocketseat/eslint-config": "1.2.0",
-    "@types/node": "18.15.0",
+    "@types/bcryptjs": "2.4.2",
+    "@types/node": "18.15.13",
     "eslint": "8.36.0",
-    "prisma": "4.11.0",
-    "tsup": "6.6.3",
-    "tsx": "3.12.4",
-    "typescript": "4.9.5"
+    "prisma": "4.13.0",
+    "tsup": "6.7.0",
+    "tsx": "3.12.6",
+    "typescript": "5.0.4"
   },
   "dependencies": {
-    "@prisma/client": "4.11.0",
+    "@prisma/client": "4.13.0",
+    "bcryptjs": "2.4.3",
     "dotenv": "16.0.3",
-    "fastify": "4.14.1",
+    "fastify": "4.15",
     "zod": "3.21.4"
   }
 }
