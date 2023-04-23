@@ -1,2 +1,3 @@
 no_modules
 build
+*.enum.ts

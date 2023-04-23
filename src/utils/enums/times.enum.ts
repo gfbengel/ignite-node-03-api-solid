@@ -1,0 +1,5 @@
+export enum Times {
+  ONE_SECOND_IN_MS = 1000,
+  ONE_MINUTE_IN_MS = 60 * Times.ONE_SECOND_IN_MS,
+  ONE_HOUR_IN_MS = 60 * Times.ONE_MINUTE_IN_MS,
+}
