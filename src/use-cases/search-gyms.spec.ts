@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { InMemoryGymsRepository } from '@/repositories/in-memory/gyms.repository'
 import { SearchGymsUseCase } from './search-gyms.use-case'
@@ -15,10 +15,6 @@ describe('search gyms use case', () => {
     sut = new SearchGymsUseCase(gymsRepository)
   })
 
-  afterEach(() => {
-    vi.useRealTimers()
-  })
-
   it('should be able to search for gyms', async () => {
     await gymsRepository.create({
       id: 'gym-id-1',
@@ -30,7 +26,7 @@ describe('search gyms use case', () => {
     })
 
     await gymsRepository.create({
-      id: 'gym-id-1',
+      id: 'gym-id-2',
       title: 'TypeScript Gym',
       phone: '+5511999999999',
       description: 'TypeScript Gym description',

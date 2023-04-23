@@ -1,5 +1,5 @@
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/check-ins.repository'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { GetUserMetricsUseCase } from './get-user-metrics.use-case'
 
 let checkInsRepository: InMemoryCheckInsRepository
@@ -12,10 +12,6 @@ describe('get user metrics use case', () => {
     checkInsRepository = new InMemoryCheckInsRepository()
 
     sut = new GetUserMetricsUseCase(checkInsRepository)
-  })
-
-  afterEach(() => {
-    vi.useRealTimers()
   })
 
   it('should be able to get check-ins count from metrics', async () => {

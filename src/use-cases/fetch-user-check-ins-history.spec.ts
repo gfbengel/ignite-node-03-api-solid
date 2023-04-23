@@ -1,5 +1,5 @@
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/check-ins.repository'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { FetchUserCheckInsHistoryUseCase } from './fetch-user-check-ins-history.use-case'
 
@@ -13,10 +13,6 @@ describe('fetch user check-ins history use case', () => {
     checkInsRepository = new InMemoryCheckInsRepository()
 
     sut = new FetchUserCheckInsHistoryUseCase(checkInsRepository)
-  })
-
-  afterEach(() => {
-    vi.useRealTimers()
   })
 
   it('should be able to fetch user check-ins history', async () => {
