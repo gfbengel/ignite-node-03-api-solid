@@ -2,7 +2,6 @@ import { InMemoryCheckInsRepository } from '@/repositories/in-memory/check-ins.r
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { InMemoryGymsRepository } from '@/repositories/in-memory/gyms.repository'
-import { Decimal } from '@prisma/client/runtime/library'
 import { CheckInUseCase } from './check-in.use-case'
 import { MaxDistanceError } from './errors/max-distance.error'
 import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins.error'
@@ -18,22 +17,19 @@ const defaultCoordinate = {
 }
 
 describe('check in use case', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInsRepository = new InMemoryCheckInsRepository()
     gymsRepository = new InMemoryGymsRepository()
 
     sut = new CheckInUseCase(checkInsRepository, gymsRepository)
 
-    gymsRepository.items.push({
+    await gymsRepository.create({
       id: 'gym-id-1',
       title: 'Gym 1',
       phone: '+5511999999999',
       description: 'Gym 1 description',
-      latitude: new Decimal(defaultCoordinate.latitude),
-      longitude: new Decimal(defaultCoordinate.longitude),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      deletedAt: null,
+      latitude: defaultCoordinate.latitude,
+      longitude: defaultCoordinate.longitude,
     })
 
     vi.useFakeTimers()
