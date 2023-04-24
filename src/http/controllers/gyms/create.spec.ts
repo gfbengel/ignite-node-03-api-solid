@@ -1,4 +1,5 @@
 import { app } from '@/app'
+import { Role } from '@/utils/enums/roles.enum'
 import { createAndAuthenticateUser } from '@/utils/tests/create-and-authenticate-user'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
@@ -13,7 +14,7 @@ describe('gym | create (e2e)', () => {
   })
 
   it('should be able to create a gym', async () => {
-    const { accessToken } = await createAndAuthenticateUser(app)
+    const { accessToken } = await createAndAuthenticateUser(app, Role.ADMIN)
 
     const response = await request(app.server)
       .post('/gyms')

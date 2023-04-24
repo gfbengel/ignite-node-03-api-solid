@@ -1,5 +1,6 @@
 import { app } from '@/app'
 import { prisma } from '@/lib/prisma'
+import { Role } from '@/utils/enums/roles.enum'
 import { createAndAuthenticateUser } from '@/utils/tests/create-and-authenticate-user'
 import request from 'supertest'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
@@ -14,7 +15,7 @@ describe('check-in | validate (e2e)', () => {
   })
 
   it('should be able to validate a check in', async () => {
-    const { accessToken } = await createAndAuthenticateUser(app)
+    const { accessToken } = await createAndAuthenticateUser(app, Role.ADMIN)
 
     const user = await prisma.user.findFirstOrThrow()
 
